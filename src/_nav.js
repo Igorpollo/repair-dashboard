@@ -53,6 +53,23 @@ export default {
       ]
     },
     {
+      name: 'Serviços',
+      url: '/services',
+      icon: 'icon-puzzle',
+      children: [
+        {
+          name: 'Ver todos',
+          url: '/services/index',
+          icon: 'icon-puzzle'
+        },
+        {
+          name: 'Adicionar Servico',
+          url: '/services/new',
+          icon: 'icon-puzzle'
+        }
+      ]
+    },
+    {
       name: 'Widgets',
       url: '/widgets',
       icon: 'icon-calculator',

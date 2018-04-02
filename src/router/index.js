@@ -11,9 +11,14 @@ import Widgets from '@/views/Widgets'
 
 // Minhas
 import newCategory from '@/views/categories/new'
+import viewCategory from '@/views/categories/index'
+
+import viewUsers from '@/views/users/index'
+
+import viewServices from '@/views/services/index'
+import addServices from '@/views/services/new'
 // Views - Components
 
-import SocialButtons from '@/views/components/SocialButtons'
 import Cards from '@/views/components/Cards'
 import Forms from '@/views/components/Forms'
 
@@ -22,7 +27,6 @@ import Switches from '@/views/components/Switches'
 import Tables from '@/views/components/Tables'
 
 // Views - Icons
-import FontAwesome from '@/views/icons/FontAwesome'
 import SimpleLineIcons from '@/views/icons/SimpleLineIcons'
 
 // Views - Pages
@@ -73,9 +77,9 @@ export default new Router({
               component: newCategory
             },
             {
-              path: 'social-buttons',
-              name: 'Social Buttons',
-              component: SocialButtons
+              path: 'index',
+              name: 'Ver todas',
+              component: viewCategory
             },
             {
               path: 'cards',
@@ -105,17 +109,37 @@ export default new Router({
           ]
         },
         {
-          path: 'icons',
-          redirect: '/icons/font-awesome',
-          name: 'Icons',
+          path: 'services',
+          redirect: '/services/index',
+          name: 'Serviços',
           component: {
             render (c) { return c('router-view') }
           },
           children: [
             {
-              path: 'font-awesome',
-              name: 'Font Awesome',
-              component: FontAwesome
+              path: 'new',
+              name: 'Adicionar Serviço',
+              component: addServices
+            },
+            {
+              path: 'index',
+              name: 'Ver todas',
+              component: viewServices
+            }
+          ]
+        },
+        {
+          path: 'users',
+          redirect: '/users/index',
+          name: 'Users',
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
+            {
+              path: 'index',
+              name: 'Ver Usuarios',
+              component: viewUsers
             },
             {
               path: 'simple-line-icons',

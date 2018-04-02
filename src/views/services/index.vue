@@ -7,13 +7,24 @@
             <thead>
               <tr>
                 <th>Nome</th>
+                <th>Categoria</th>
+                <th>Variável</th>
+                <th>Preço</th>
                 <th>Ação</th>
 
               </tr>
             </thead>
             <tbody>
-              <tr v-for="categoria in categorias">
-                <td>{{categoria.name}}</td>
+              <tr v-for="usuario in usuarios">
+                <td>{{usuario.name}}</td>
+                <td>
+                    {{usuario.category.name}}
+                </td>
+                <td>
+                    <span style="color: green" v-if="usuario.is_variable">Sim</span>
+                    <span style="color: red" v-else>Não</span   >
+                </td>
+                <td>R${{usuario.price.toLocaleString('de-DE')}}</td>
                 <td>Deletar</td>
               </tr>
             </tbody>
@@ -31,13 +42,13 @@ export default {
   name: 'forms',
   data: function () {
     return {
-      categorias: []
+      usuarios: []
     }
   },
   beforeCreate () {
-    axios.get('https://repair-solucoes.herokuapp.com/category')
+    axios.get('https://repair-solucoes.herokuapp.com/service')
       .then(response => {
-        this.categorias = response.data
+        this.usuarios = response.data
       })
       .catch(error => {
         console.log(error)
