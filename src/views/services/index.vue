@@ -24,7 +24,7 @@
                     <span style="color: green" v-if="usuario.is_variable">Sim</span>
                     <span style="color: red" v-else>Não</span   >
                 </td>
-                <td>R${{usuario.price.toLocaleString('de-DE')}}</td>
+                <td>R${{usuario.price}}</td>
                 <td>Deletar</td>
               </tr>
             </tbody>
