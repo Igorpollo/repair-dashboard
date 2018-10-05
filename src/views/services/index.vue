@@ -46,7 +46,7 @@ export default {
     }
   },
   beforeCreate () {
-    axios.get('https://repair-solucoes.herokuapp.com/service')
+    axios.get('http://209.97.150.143:3000/service')
       .then(response => {
         this.usuarios = response.data
       })

@@ -10,7 +10,6 @@
                 <th>Prestador</th>
                 <th>Status</th>
                 <th>Ação</th>
-
               </tr>
             </thead>
             <tbody>
