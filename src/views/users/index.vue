@@ -9,6 +9,7 @@
                 <th>Nome</th>
                 <th>Prestador</th>
                 <th>Status</th>
+                <th>Iugu</th>
                 <th>Ação</th>
               </tr>
             </thead>
@@ -22,6 +23,11 @@
                 <td>
                     <span v-if="usuario.is_active" class="badge badge-success">Ativo</span>
                     <span v-else class="badge badge-warning">Pendente</span>
+                </td>
+                <td>
+                  <span v-if="!usuario.bank" class="badge badge-danger">Não possui banco cadastrado</span>
+                  <span v-if="usuario.bank && usuario.iugu_approved" class="badge badge-success">Sim</span>
+                  <span v-if="usuario.bank && !usuario.iugu_approved" @click="criarIugu(usuario)" class="badge badge-warning" style="cursor: pointer;">Não</span>
                 </td>
                 <td>Deletar</td>
               </tr>
@@ -53,7 +59,17 @@ export default {
       })
   },
   methods: {
-
+    criarIugu: function (usuario) {
+      axios.post('https://api.iugu.com/v1/accounts/' + usuario.iugu_account_id + '/request_verification?api_token=1560e1286e9f3a025c65ea8282697e4b',
+        {
+          data: {
+            price_range: 'Até R$3000,00'
+          }
+        }
+      ).then(response => {
+        console.log(response)
+      })
+    }
   }
 }
 </script>
